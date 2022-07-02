@@ -8,13 +8,32 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
+<!--header-->
     <header>
         <h1 class="page-title">Taskinator</h1>
         <p>Click the button below to add a new task!</p>
-        <button id="save-task" class="btn">Add Task</button>
+<!--header form to add new tasks-->
+        <form id="task-form">
+<!--name task-->
+            <div class="form-group">
+                <input type="text" name="task-name" placeholder="Enter task name!" />
+            </div>
+<!--select task type-->
+            <div class="form-group">
+                <select name="task-type" class="select-dropdown">
+                    <option value="" disabled selected>Pick a task type:</option>
+                    <option value="Print">Print</option>
+                    <option value="Web">Web</option>
+                    <option value="Mobile">Mobile</option>
+                </select>
+            </div>
+<!--button-->
+            <div class="form-group">
+                <button id="save-task" class="btn">Add Task</button>
+            </div>
+        </form>
     </header>
-
+<!--task list-->
     <main class="page-content">
         <section class="task-list-wrapper">
             <h2 class="list-title">Tasks to Do:</h2>
@@ -23,7 +42,7 @@
             </ul>
         </section>
     </main>
-
+<!--footer info-->
     <footer>
         &copy;2020 UCF Bootcamp and built by Xun
     </footer>
