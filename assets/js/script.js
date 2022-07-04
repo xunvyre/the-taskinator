@@ -1,6 +1,7 @@
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");    //establish variables
 var taskIdCounter = 0;
+var pageContentEl = document.querySelector("#page-content");
 
 var taskFormHandler = function(event)                     //define function
 {
@@ -84,5 +85,33 @@ var createTaskActions = function(taskId)
     return actionContainerEl;    
 };
 
-formEl.addEventListener("submit", taskFormHandler);   //call function based on the submit action
+var editTask = function (taskId)
+{
+    console.log("editing task #" +taskId);
+    var taskSelected = document.querySelector(".task-item[data-task-id='" +taskId+ "']");
+};
 
+var deleteTask = function(taskId)
+{
+    var taskSelected = document.querySelector(".task-item[data-task-id='" +taskId+ "']");
+    taskSelected.remove();
+};
+
+var taskButtonHandler = function(event)
+{
+    var targetEl = event.target; //establish variable for retrieving the target element
+
+    if (targetEl.matches(".edit-btn"))                           //if the edit button is clicked
+    {
+        var taskId = targetEl.getAttribute("data-task-id");     //get the element's taskId
+        editTask(taskId);                                       //and call the function
+    }
+    else if(event.target.matches(".delete-btn"))
+    {
+        var taskId = event.target.getAttribute("data-task-id");
+        deleteTask(taskId);
+    }
+};
+
+formEl.addEventListener("submit", taskFormHandler);   //call function based on the submit action
+pageContentEl.addEventListener("click", taskButtonHandler);
